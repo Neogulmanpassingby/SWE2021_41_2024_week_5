@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in files/*; do
+    first_char=$(basename "$file" | cut -c1)
+    
+    first_char_lower=$(echo "$first_char" | tr '[:upper:]' '[:lower:]')
+
+    if [ -d "$first_char_lower" ]; then
+        mv "$file" "$first_char_lower/"
+    else
+        echo "error"
+    fi
+done
